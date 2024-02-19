@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunDNS", "AliyunDNS\AliyunDNS.csproj", "{FC4ED66D-665F-4D94-A495-9B8B0D4D465D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunDns.Core", "AliyunDns.Core\AliyunDns.Core.csproj", "{2E5133D5-5FF3-463B-A049-C6A606C682EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC4ED66D-665F-4D94-A495-9B8B0D4D465D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4ED66D-665F-4D94-A495-9B8B0D4D465D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4ED66D-665F-4D94-A495-9B8B0D4D465D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4ED66D-665F-4D94-A495-9B8B0D4D465D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5133D5-5FF3-463B-A049-C6A606C682EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5133D5-5FF3-463B-A049-C6A606C682EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5133D5-5FF3-463B-A049-C6A606C682EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5133D5-5FF3-463B-A049-C6A606C682EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2D34B55-DBBA-45D9-93D5-9D95D8DA4F05}
+	EndGlobalSection
+EndGlobal

@@ -9,6 +9,8 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
+  
+
   <ItemGroup>
     <ProjectReference Include="..\AliyunDns.Core\AliyunDns.Core.csproj" />
   </ItemGroup>

@@ -1,10 +1,9 @@
 ﻿using AliyunDns.Core.Beans.Aliyun;
+using Serilog;
 using System.Diagnostics;
 using System.Net;
-using System.Net.Sockets;
 using System.Reflection;
 using System.Text.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AliyunDns.Core
 {
@@ -40,23 +39,13 @@ namespace AliyunDns.Core
             {
                 startInfo.ArgumentList.Add(arg);
             }
-            p.StartInfo = startInfo;
-            p.EnableRaisingEvents = true;
-            p.OutputDataReceived += delegate (object sender, DataReceivedEventArgs e)
-            {
-                Console.WriteLine(e.Data);
-            };
-            p.ErrorDataReceived += delegate (object sender, DataReceivedEventArgs e)
-            {
-                Console.WriteLine(e.Data);
-            };
+            p.StartInfo = startInfo;           
             p.Start();
             p.WaitForExit();
         }       
 
         public static async Task<QueryRecordResponse?> QueryAsync(string domain)
-        {
-            //aliyun.exe alidns DescribeDomainRecords  --DomainName chenxuejian.cn
+        {          
             return await Task.Run(() =>
             {
                 try
@@ -78,12 +67,12 @@ namespace AliyunDns.Core
                     p.Start();
                     p.WaitForExit();
                     var output = p.StandardOutput.ReadToEnd();
-
+                    Log.Information(output);
                     return JsonSerializer.Deserialize<QueryRecordResponse>(output, QueryRecordResponseSerializerContext.Default.QueryRecordResponse);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Log.Error(e, "Unhandled exception");
                 }
                 return null;
             });
@@ -92,7 +81,7 @@ namespace AliyunDns.Core
 
         public static async Task UpdateAsync(string recordId,string rr,string type,string value)
         {
-            return await Task.Run(() =>
+            await Task.Run(() =>
             {
                 try
                 {
@@ -114,13 +103,12 @@ namespace AliyunDns.Core
                     p.WaitForExit();
                     var output = p.StandardOutput.ReadToEnd();
 
-                    Console.WriteLine(output);
+                    Log.Information(output);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Log.Error(e, "Unhandled exception");
                 }
-                return null;
             });
         }
         public static async Task<IPAddress?> GetIPv4AddressAsync()
@@ -136,7 +124,7 @@ namespace AliyunDns.Core
                     return ip;
                 }
             }
-            catch (Exception ex) { Console.WriteLine(ex); }
+            catch (Exception ex) { Log.Error(ex, "Unhandled exception"); }
 
 
             return null;
@@ -156,7 +144,7 @@ namespace AliyunDns.Core
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Error(ex, "Unhandled exception");
             }
 
             return null;

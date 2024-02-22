@@ -2,14 +2,14 @@
 
 namespace AliyunDns.Core.Beans.Aliyun
 {
-    public class DescribeDomainRecordsQuery(string domainName, string action, string accessKeyId) : AliyunQueryBase(action, accessKeyId)
+    public class DescribeDomainRecordsQuery(string domainName,  string accessKeyId,  string action = "DescribeDomainRecords") : AliyunQueryBase(action, accessKeyId)
     {
         public string DomainName { get; set; } = domainName;
 
         public long PageNumber { get; set; } = 1;
 
-        public long PageSize { get; set; } = 20;
-        public override Dictionary<string, string> GetQuery()
+        public long PageSize { get; set; } = 100;
+        public override SortedDictionary<string, string> GetQuery()
         {
             var dic = GetParamsDictionary();
             dic.Add("DomainName", DomainName);

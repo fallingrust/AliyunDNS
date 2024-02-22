@@ -11,11 +11,11 @@
         public string SignatureMethod { get; set; } = "HMAC-SHA1";
         public string SignatureVersion { get; set; } = "1.0";
 
-        public abstract Dictionary<string, string> GetQuery();
+        public abstract SortedDictionary<string, string> GetQuery();
        
-        protected Dictionary<string,string> GetParamsDictionary()
+        protected SortedDictionary<string,string> GetParamsDictionary()
         {
-            return new Dictionary<string, string>()
+            return new SortedDictionary<string, string>()
             {
                 { "Action", Action },
                 { "Version", Version },

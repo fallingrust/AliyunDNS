@@ -2,14 +2,14 @@
 
 namespace AliyunDns.Core.Beans.Aliyun
 {
-    public class UpdateDomainRecordQuery(string action, string accessKeyId) : AliyunQueryBase(action, accessKeyId)
+    public class UpdateDomainRecordQuery(string accessKeyId, string action = "UpdateDomainRecord") : AliyunQueryBase(action, accessKeyId)
     {
         public string RecordId { get; set; } = "";
         public string RR { get; set; } = "";
         public string Type { get; set; } = "";
         public string Value { get; set; } = "";
 
-        public override Dictionary<string, string> GetQuery()
+        public override SortedDictionary<string, string> GetQuery()
         {
             var dic = GetParamsDictionary();
             dic.Add("RecordId", RecordId);

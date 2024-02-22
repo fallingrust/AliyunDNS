@@ -1,10 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using AliyunDns.Core.Beans.Base;
+using System.Text.Json.Serialization;
 
 namespace AliyunDns.Core.Beans.Aliyun
 {
-    public class UpdateDomainRecordResponse
-    {
-        public string? RequestId { get; set; }
+    public class UpdateDomainRecordResponse : AliyunResponseBase
+    {      
         public string? RecordId { get; set; }
     }
 

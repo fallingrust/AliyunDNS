@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using AliyunDns.Core.Beans.Base;
+using System.Text.Json.Serialization;
 
 namespace AliyunDns.Core.Beans.Aliyun
 {
@@ -33,15 +34,13 @@ namespace AliyunDns.Core.Beans.Aliyun
 
         public List<Record>? Record { get; set; }
     }  
-    public class DescribeDomainRecordsResponse
+    public class DescribeDomainRecordsResponse : AliyunResponseBase
     {
         public DomainRecords? DomainRecords { get; set; }
 
         public int PageNumber { get; set; }
 
-        public int PageSize { get; set; }
-
-        public string? RequestId { get; set; }
+        public int PageSize { get; set; }       
 
         public int TotalCount { get; set; }
     }

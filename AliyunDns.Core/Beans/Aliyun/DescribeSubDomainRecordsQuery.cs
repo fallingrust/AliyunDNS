@@ -2,9 +2,9 @@
 
 namespace AliyunDns.Core.Beans.Aliyun
 {
-    public class DescribeDomainRecordsQuery(string domainName,  string accessKeyId,  string action = "DescribeDomainRecords") : AliyunQueryBase(accessKeyId, action)
+    public class DescribeSubDomainRecordsQuery(string subDomain, string accessKeyId, string action = "DescribeSubDomainRecords") : AliyunQueryBase(accessKeyId, action)
     {
-        public string DomainName { get; set; } = domainName;
+        public string SubDomain { get; set; } = subDomain;
 
         public long PageNumber { get; set; } = 1;
 
@@ -12,10 +12,10 @@ namespace AliyunDns.Core.Beans.Aliyun
         public override SortedDictionary<string, string> GetQuery()
         {
             var dic = GetParamsDictionary();
-            dic.Add("DomainName", DomainName);
+            dic.Add("SubDomain", SubDomain);
             dic.Add("PageNumber", PageNumber.ToString());
             dic.Add("PageSize", PageSize.ToString());
             return dic;
-        }           
+        }
     }
 }

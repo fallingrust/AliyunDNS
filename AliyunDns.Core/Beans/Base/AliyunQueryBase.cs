@@ -1,6 +1,6 @@
 ﻿namespace AliyunDns.Core.Beans.Base
 {
-    public abstract class AliyunQueryBase(string action, string accessKeyId)
+    public abstract class AliyunQueryBase(string accessKeyId, string action)
     {
         public string Action { get; set; } = action;
         public string Version { get; set; } = "2015-01-09";

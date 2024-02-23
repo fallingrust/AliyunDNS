@@ -10,11 +10,12 @@ namespace AliyunDns.Core.Util
         {
             _client = new HttpClient();
         }
-        public static async Task<IPAddress?> GetIPv4AddressAsync()
+        public static async Task<IPAddress?> GetIPv4AddressAsync(string url)
         {
             try
-            {                
-                var response = await _client.GetAsync("https://ipv4.ip.mir6.com");
+            {
+                if (string.IsNullOrWhiteSpace(url)) url = "https://ipv4.ip.mir6.com";
+                var response = await _client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -27,11 +28,12 @@ namespace AliyunDns.Core.Util
 
             return null;
         }
-        public static async Task<IPAddress?> GetIPv6AddressAsync()
+        public static async Task<IPAddress?> GetIPv6AddressAsync(string url)
         {
             try
             {
-                var response = await _client.GetAsync("https://ipv6.ip.mir6.com");
+                if (string.IsNullOrWhiteSpace(url)) url = "https://ipv6.ip.mir6.com";
+                var response = await _client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();

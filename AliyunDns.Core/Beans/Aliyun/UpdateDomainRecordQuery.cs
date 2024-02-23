@@ -2,7 +2,7 @@
 
 namespace AliyunDns.Core.Beans.Aliyun
 {
-    public class UpdateDomainRecordQuery(string accessKeyId, string action = "UpdateDomainRecord") : AliyunQueryBase(action, accessKeyId)
+    public class UpdateDomainRecordQuery(string accessKeyId, string action = "UpdateDomainRecord") : AliyunQueryBase(accessKeyId, action)
     {
         public string RecordId { get; set; } = "";
         public string RR { get; set; } = "";

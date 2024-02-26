@@ -13,6 +13,7 @@
 ### 配置
 
 根目录下生成config.json文件，或直接运行一次：
+```json
 {
   "V4Url": "https://ipv4.ip.mir6.com",
   "V6Url": "https://ipv6.ip.mir6.com",
@@ -35,7 +36,7 @@
     }
   ]
 }
-
+```
 ### 文件目录说明
 
 eg:

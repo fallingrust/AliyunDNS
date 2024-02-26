@@ -24,7 +24,7 @@ namespace AliyunDns.Core.Util
         public static async Task UpdateAsync()
         {
            
-            Log.Information($"\r\n start update domain records");
+            Log.Information($"start update domain records");
 
             if (_config == null)
             {
@@ -204,22 +204,22 @@ namespace AliyunDns.Core.Util
             var queryStr = BuildQueryString(query.GetQuery());
             var signedStr = Signature("GET", _config.KeySecret, queryStr);
             
-            Log.Debug("\r\n----------Signed String ----------");
+            Log.Debug("----------signed string ----------");
             Log.Debug(signedStr);
-            Log.Debug("----------Signed String ----------\r\n");
+            Log.Debug("----------signed string ----------\r\n");
 
             var url = $"?Signature={signedStr}&{queryStr}";
 
-            Log.Debug("\r\n----------Query Url----------");
+            Log.Debug("----------query url----------");
             Log.Debug(url);
-            Log.Debug("----------Query Url ----------\r\n");
+            Log.Debug("----------query url----------\r\n");
 
             var response = await _client.GetAsync(url);
             var content = await response.Content.ReadAsStringAsync();
 
-            Log.Debug("\r\n----------API Response ----------");
+            Log.Debug("----------api response----------");
             Log.Debug(content);
-            Log.Debug("----------API Response ----------\r\n");
+            Log.Debug("----------api response----------\r\n");
 
 
             return JsonSerializer.Deserialize(content, jsonTypeInfo);
@@ -243,9 +243,9 @@ namespace AliyunDns.Core.Util
         public static string Signature(string method, string secKey, string str)
         {
             str = method.ToUpper() + '&' + UrlEncode("/") + '&' + UrlEncode(str);
-            Log.Debug("\r\n---------- String To Be Signed ----------");
+            Log.Debug("---------- string to be signed ----------");
             Log.Debug(str);
-            Log.Debug("----------String To Be Signed ----------\r\n");
+            Log.Debug("---------- string to be signed ----------\r\n");
 
             using var alg = new HMACSHA1(Encoding.UTF8.GetBytes(secKey + "&"));           
             return UrlEncode(Convert.ToBase64String(alg.ComputeHash(Encoding.UTF8.GetBytes(str))));

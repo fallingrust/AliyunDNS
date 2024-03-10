@@ -45,7 +45,15 @@ namespace AliyunDNS
                 AliyunUtil.Configure(config);
                 _timer = new Timer(async obj =>
                 {
-                    await AliyunUtil.UpdateAsync();
+                    try
+                    {
+                        await AliyunUtil.UpdateAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex, "Unhandled exception");
+                    }
+                   
                 }, null, 0, config.Interval * 1000);
             }            
            
